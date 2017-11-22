@@ -1,2 +1,11 @@
+# Blacklist everything
+*
+
+# Whitelist all directories
+!*/
+
+# Ignore coursera setup code
 **/lib
+
+# Only Octave files
 !*.m
