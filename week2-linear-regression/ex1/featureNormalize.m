@@ -30,6 +30,9 @@ mu = mean(X);
 sigma = std(X);
 
 % relying on Octave's wonderful feature - Automatic Broadcasting
+% When one of the dimensions is 1,
+% the array with that singleton dimension gets copied along that dimension until
+% it matches the dimension of the other array
 X_norm = (X_norm - mu) ./ sigma;
 
 
