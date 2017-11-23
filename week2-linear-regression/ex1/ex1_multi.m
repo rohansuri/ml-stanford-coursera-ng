@@ -91,9 +91,10 @@ theta = zeros(3, 1);
 
 % Plot the convergence graph
 figure;
-plot(1:numel(J_history), J_history, '-b', 'LineWidth', 2);
+plot(1:numel(J_history), J_history, '-b;alpha = 0.01;', 'LineWidth', 2);
 xlabel('Number of iterations');
 ylabel('Cost J');
+
 
 % Display gradient descent's result
 fprintf('Theta computed from gradient descent: \n');
@@ -104,16 +105,104 @@ fprintf('\n');
 % ====================== YOUR CODE HERE ======================
 % Recall that the first column of X is all-ones. Thus, it does
 % not need to be normalized.
-price = 0; % You should change this
 
+price = [1 unseenNormalize([1650 3], mu, sigma)] * theta; % You should change this
 
-% ============================================================
 
 fprintf(['Predicted price of a 1650 sq-ft, 3 br house ' ...
          '(using gradient descent):\n $%f\n'], price);
 
-fprintf('Program paused. Press enter to continue.\n');
-pause;
+fprintf("\nAlpha = %f  Iterations = %d \n", alpha, num_iters);
+fprintf('Initial value of J \n');
+fprintf(' %f \n', J_history(1,1));
+fprintf('Final value of J \n');
+fprintf(' %f \n', J_history(numel(J_history)));
+% ============================================================
+
+% Varying alpha
+alpha = 0.03;
+theta = zeros(3, 1);
+[theta, J_history] = gradientDescentMulti(X, y, theta, alpha, num_iters);
+
+% Plot the convergence graph
+hold on;
+plot(1:numel(J_history), J_history, '-g;alpha = 0.03;', 'LineWidth', 2);
+xlabel('Number of iterations');
+ylabel('Cost J');
+
+fprintf("\nAlpha = %f  Iterations = %d \n", alpha, num_iters);
+fprintf('Initial value of J \n');
+fprintf(' %f \n', J_history(1,1));
+fprintf('Final value of J \n');
+fprintf(' %f \n', J_history(numel(J_history)));
+
+
+% ============================================================
+
+% Varying alpha
+alpha = 0.001;
+theta = zeros(3, 1);
+[theta, J_history] = gradientDescentMulti(X, y, theta, alpha, num_iters);
+
+% Plot the convergence graph
+hold on;
+plot(1:numel(J_history), J_history, '-r;alpha = 0.001;', 'LineWidth', 2);
+xlabel('Number of iterations');
+ylabel('Cost J');
+
+fprintf("\nAlpha = %f  Iterations = %d \n", alpha, num_iters);
+fprintf('Initial value of J \n');
+fprintf(' %f \n', J_history(1,1));
+fprintf('Final value of J \n');
+fprintf(' %f \n', J_history(numel(J_history)));
+
+
+% ============================================================
+
+
+% Varying alpha
+alpha = 0.1;
+theta = zeros(3, 1);
+[theta, J_history] = gradientDescentMulti(X, y, theta, alpha, num_iters);
+
+% Plot the convergence graph
+hold on;
+plot(1:numel(J_history), J_history, '-m;alpha = 0.1;', 'LineWidth', 2);
+xlabel('Number of iterations');
+ylabel('Cost J');
+
+fprintf("\nAlpha = %f  Iterations = %d \n", alpha, num_iters);
+fprintf('Initial value of J \n');
+fprintf(' %f \n', J_history(1,1));
+fprintf('Final value of J \n');
+fprintf(' %f \n', J_history(numel(J_history)));
+
+% ============================================================
+
+
+
+% Varying alpha
+alpha = 1.312;
+theta = zeros(3, 1);
+[theta, J_history] = gradientDescentMulti(X, y, theta, alpha, num_iters);
+
+% Plot the convergence graph
+hold on;
+plot(1:numel(J_history), J_history, '-c;alpha = 1.312;', 'LineWidth', 2);
+xlabel('Number of iterations');
+ylabel('Cost J');
+
+fprintf("\nAlpha = %f  Iterations = %d \n", alpha, num_iters);
+fprintf('Initial value of J \n');
+fprintf(' %f \n', J_history(1,1));
+fprintf('Final value of J \n');
+fprintf(' %f \n', J_history(numel(J_history)));
+
+
+% ============================================================
+
+%fprintf('Program paused. Press enter to continue.\n');
+%pause;
 
 %% ================ Part 3: Normal Equations ================
 
@@ -146,10 +235,19 @@ fprintf('Theta computed from the normal equations: \n');
 fprintf(' %f \n', theta);
 fprintf('\n');
 
+J = computeCostMulti(X, y, theta);
+fprintf('Cost function J :\n');
+fprintf(' %f \n', J);
+fprintf('\n');
+
+hold on;
+plot(0, J, 'rx;normalEqn;', 'markersize', 20, 'LineWidth', 2);
+
+%plot(1:num_iters, J * ones(num_iters), '-k',  'LineWidth', 2);
 
 % Estimate the price of a 1650 sq-ft, 3 br house
 % ====================== YOUR CODE HERE ======================
-price = 0; % You should change this
+price = [1 1650 3] * theta; % You should change this
 
 
 % ============================================================
