@@ -1,0 +1,1 @@
+![Plot for cost function with varying learning rates](varying-learning-rate.jpg?raw="true")
